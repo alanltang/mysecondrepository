@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<project name="estoreDataCapture" default="Main" basedir=".">
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+	<property name="src.dir" location="src" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+	<property name="report.dir" location="testreport" />
+
+	<!-- Define the classpath which includes the junit.jar and the classes after compiling-->
+	<path id="junit.class.path">
+		<pathelement location="lib/j2ee.jar" />
+		<pathelement location="lib/cos.jar" />
+		<pathelement location="lib/jforumsecuresso-1.0.jar" />
+	</path>
+
+	<!-- Deletes the existing build, docs and dist directory-->
+	<target name="clean">
+		<delete dir="${build}" />
+		<delete dir="${report.dir}" />
+		<delete dir="${dist}" />
+	</target>
+
+	<!-- Creates the  build, docs and dist directory-->
+	<target name="makedir">
+		<mkdir dir="${build}" />
+		<mkdir dir="${report.dir}" />
+		<mkdir dir="${dist}/lib" />
+	</target>
+
+	<!-- Compiles the java code (including the usage of library for JUnit -->
+	<target name="compile" depends="clean, makedir">
+		<javac srcdir="${src.dir}" destdir="${build}">
+			<classpath refid="junit.class.path" />
+		</javac>
+	</target>
+	<target name="jar" depends="compile">
+		<jar destfile="${dist}/lib/myservlet.jar" basedir="${build}" includes="**/*.class" />
+
+
+	</target>
+	
+	<target name="Main" depends="clean, makedir, compile, jar">
+		<description>Main target</description>
+	</target>
+	
+
+</project>
