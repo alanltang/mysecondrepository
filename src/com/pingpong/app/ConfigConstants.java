@@ -41,7 +41,7 @@ public class ConfigConstants
   public final static String COMMAND_FINDPWD        = "findpwd";
   public final static String COMMAND_CONFIRM        = "confirm";
   public final static String COMMAND_SCHEDULE        = "schedule";
-  public final static String LOGFILE        = "c:\\myproject\\log.txt";
+  public final static String LOGFILE        = "/home/tt00pingpong/log.txt";
   public final static String EMAIL_MESSAGE00= "Don't email the following first link to someone else because it is your private link.\n\n";
   public final static String EMAIL_MESSAGE01= "Playing ping pong is fun. \n\n";
   public final static String EMAIL_MESSAGE021= "Your invitation has been sent. Please click and bookmark the first link below. You can check or update the status through this link.\n\n";
