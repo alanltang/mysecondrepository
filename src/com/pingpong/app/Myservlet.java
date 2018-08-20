@@ -4803,7 +4803,7 @@ private void sendMail(String Text, String s, String event){
 	    // setText(text, charset)
 	    msg.setText(Text);
 	    Transport t = session.getTransport("smtp");
-	    t.connect(host, "tt00pingpong@gmail.com", "@Yongmeim7!");
+	    t.connect(host, "tt00pingpong@gmail.com", "@Nicholas123!");
 	    msg.saveChanges();      // don't forget this
 	    t.sendMessage(msg, msg.getAllRecipients());
 	    t.close();
