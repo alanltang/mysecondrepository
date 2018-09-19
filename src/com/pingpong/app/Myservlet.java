@@ -1370,7 +1370,7 @@ private void doJoinLeague(HttpServletRequest request, HttpServletResponse respon
 		  }else{
 			  location = "undecided place";
 		  }
-		  location = location.replaceAll(" ", "%20");
+		  
 		  String sMail = (String)session.getAttribute("sessionMail");
 		  String invitedby = (String)session.getAttribute("sessionName");
 		  ConfigLogUtil.log(ConfigConstants.LOGFILE, "my session mail "+sMail);
@@ -1414,7 +1414,7 @@ private void doJoinLeague(HttpServletRequest request, HttpServletResponse respon
 				  ConfigLogUtil.log(ConfigConstants.LOGFILE, "MailAddress= "+email);
 				  //set up message variable
 				  String message1 = ConfigConstants.EMAIL_MESSAGE01;
-				  
+				  location = location.replaceAll(" ", "%20");
 				  String message3="http://35.224.163.178:8080/Mystuff?command=status&Email="+email+"&Id="+id+"&Location="+location+"&Date="+(String)session.getAttribute("sessionTimeStamp");
 				  String message4=ConfigConstants.EMAIL_MESSAGE04;
 				  String message5="http://35.224.163.178:8080/Mystuff?command=status&Email="+"dummy"+"&Id="+id+"&Location="+location;
@@ -1458,7 +1458,7 @@ private void doJoinLeague(HttpServletRequest request, HttpServletResponse respon
 			  //set up message variable
 			  String message1 = ConfigConstants.EMAIL_MESSAGE11;
 			  message2 = ConfigConstants.EMAIL_MESSAGE12;
-			  
+			  location = location.replaceAll(" ", "%20");
 			  String message3="http://35.224.163.178:8080/Mystuff?command=status&Email="+email+"&Id="+id+"&Location="+location+"&Date="+(String)session.getAttribute("sessionTimeStamp");
 			  String message4=ConfigConstants.EMAIL_MESSAGE14;
 			  String message5="http://35.224.163.178:8080/Mystuff?command=status&Email="+"dummy"+"&Id="+id+"&Location="+location;
