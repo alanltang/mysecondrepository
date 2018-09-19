@@ -1370,7 +1370,7 @@ private void doJoinLeague(HttpServletRequest request, HttpServletResponse respon
 		  }else{
 			  location = "undecided place";
 		  }
-		  String location = location.replaceAll(" ", "%20");
+		  location = location.replaceAll(" ", "%20");
 		  String sMail = (String)session.getAttribute("sessionMail");
 		  String invitedby = (String)session.getAttribute("sessionName");
 		  ConfigLogUtil.log(ConfigConstants.LOGFILE, "my session mail "+sMail);
