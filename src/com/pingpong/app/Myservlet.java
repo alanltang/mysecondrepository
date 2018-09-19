@@ -1,5 +1,5 @@
 package com.pingpong.app;
-
+import java.net.URLEncoder;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -1220,6 +1220,7 @@ private void doJoinLeague(HttpServletRequest request, HttpServletResponse respon
 	  ConfigLogUtil.log(ConfigConstants.LOGFILE, "In doStatus method.");
 	  
 	  String Location = (String)request.getParameter("Location");
+	  
 	  String State ="";
 	  String Country="";
 	  String Homeclub="";
@@ -1369,6 +1370,7 @@ private void doJoinLeague(HttpServletRequest request, HttpServletResponse respon
 		  }else{
 			  location = "undecided place";
 		  }
+		  String encodeLocation = URLEncoder.encode( location, "UTF-8" );
 		  String sMail = (String)session.getAttribute("sessionMail");
 		  String invitedby = (String)session.getAttribute("sessionName");
 		  ConfigLogUtil.log(ConfigConstants.LOGFILE, "my session mail "+sMail);
@@ -1413,9 +1415,9 @@ private void doJoinLeague(HttpServletRequest request, HttpServletResponse respon
 				  //set up message variable
 				  String message1 = ConfigConstants.EMAIL_MESSAGE01;
 				  
-				  String message3="http://www.pingpongmatch.com/Mystuff?command=status&Email="+email+"&Id="+id+"&Location="+location+"&Date="+(String)session.getAttribute("sessionTimeStamp");
+				  String message3="http://www.pingpongmatch.com/Mystuff?command=status&Email="+email+"&Id="+id+"&Location="+encodeLocation+"&Date="+(String)session.getAttribute("sessionTimeStamp");
 				  String message4=ConfigConstants.EMAIL_MESSAGE04;
-				  String message5="http://www.pingpongmatch.com/Mystuff?command=status&Email="+"dummy"+"&Id="+id+"&Location="+location;
+				  String message5="http://www.pingpongmatch.com/Mystuff?command=status&Email="+"dummy"+"&Id="+id+"&Location="+encodeLocation;
 				  String message6=ConfigConstants.EMAIL_MESSAGE06;
 				  
 				  String message = message2  + message3 + "\n\n"  + "\n" + "\n\n"+message6;
@@ -1457,9 +1459,9 @@ private void doJoinLeague(HttpServletRequest request, HttpServletResponse respon
 			  String message1 = ConfigConstants.EMAIL_MESSAGE11;
 			  message2 = ConfigConstants.EMAIL_MESSAGE12;
 			  
-			  String message3="http://www.pingpongmatch.com/Mystuff?command=status&Email="+email+"&Id="+id+"&Location="+location+"&Date="+(String)session.getAttribute("sessionTimeStamp");
+			  String message3="http://www.pingpongmatch.com/Mystuff?command=status&Email="+email+"&Id="+id+"&Location="+encodeLocation+"&Date="+(String)session.getAttribute("sessionTimeStamp");
 			  String message4=ConfigConstants.EMAIL_MESSAGE14;
-			  String message5="http://www.pingpongmatch.com/Mystuff?command=status&Email="+"dummy"+"&Id="+id+"&Location="+location;
+			  String message5="http://www.pingpongmatch.com/Mystuff?command=status&Email="+"dummy"+"&Id="+id+"&Location="+encodeLocation;
 			  String Mymessage = message2 + message3 +"\n\n";
 			  ConfigLogUtil.log(ConfigConstants.LOGFILE, Mymessage);
 			 
